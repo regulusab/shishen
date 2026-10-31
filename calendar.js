@@ -15,4 +15,4 @@ function fromSolar(y,m,d,hh,mm,tz,lateZi){if(tz==null)tz=8;
  var dj=Math.floor(jd(y,m,d,12)+0.5);var useNext=lateZi&&hh>=23;var di=((dj+49+(useNext?1:0))%60+60)%60,ds=di%10,db=di%12;
  var hb=Math.floor((hh+1)/2)%12,hs=((ds%5)*2+hb)%10;
  return {pillars:[GAN[ys]+ZHI[yb],GAN[ms]+ZHI[mb],GAN[ds]+ZHI[db],GAN[hs]+ZHI[hb]],sunLon:L,note:(hh===0?'早子時（00–01時），日柱用當日':(hh>=23?(lateZi?'夜子時（23–24時），日柱換次日':'夜子時（23–24時），日柱仍用當日'):''))};}
-root.CAL={fromSolar:fromSolar};})(this);
+root.CAL={fromSolar:fromSolar,jd:jd,sunLon:sunLon,GAN:GAN,ZHI:ZHI};})(this);

@@ -17,23 +17,41 @@ table.sg td{text-align:center}table.ln td,table.ln th{white-space:nowrap;text-al
 .sschart{margin:8px 0}.ssr{display:flex;align-items:center;gap:6px;margin:3px 0;font-size:14px}.ssl{width:3em;flex:none}.ssb{flex:1;background:#f0e9df;border-radius:4px;height:16px;overflow:hidden}.ssb i{display:block;height:100%}.ssv{width:2.6em;text-align:right;flex:none;font-size:13px}.ssg{display:flex;height:22px;border-radius:6px;overflow:hidden;margin-top:8px;font-size:11px;color:#fff;line-height:22px;white-space:nowrap}.ssg i{font-style:normal;text-align:center;overflow:hidden}
 #out p{margin:8px 0}h4{font-size:15px;color:#5a3a20;margin:12px 0 4px}.ju{border:1px solid #eadfcf;border-radius:8px;padding:8px 10px;margin:8px 0;background:#fffdf9}.jh{font-size:16px}.vb{display:inline-block;border-radius:10px;padding:0 8px;font-size:13px;color:#fff;background:#888}.v-dj{background:#2e7d32}.v-j{background:#6a9a3a}.v-m{background:#9a7b2a}.v-x{background:#b5652a}.v-dx{background:#a12a1a}td.v-dj,td.v-j,td.v-m,td.v-x,td.v-dx{color:#fff}.hl{color:#a12a1a}details.ref{border:1px solid #e2d8ca;border-radius:8px;margin:8px 0;padding:6px 10px;background:#fffdf9}details summary{cursor:pointer;color:#7a2a18;font-weight:bold}details details summary{font-weight:normal;font-size:14px}.nav{position:sticky;top:0;background:#f6f3eeee;padding:6px 0;z-index:5}.nav a{flex:1 1 auto;text-align:center;background:#7a2a18;color:#fff;border-radius:16px;padding:4px 10px;text-decoration:none;font-size:14px}table.d60 td.wr{white-space:normal;text-align:left;min-width:220px}
 @media(max-width:480px){td,th{font-size:13px;padding:3px}.big2{font-size:18px}}
+.tabs{display:flex;gap:6px;margin-bottom:6px}.tabs button{flex:1;background:#e9dfd2;color:#5a3a20}.tabs button.on{background:#7a2a18;color:#fff}
+button.sec{background:#5c5c5c}.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.pg label{font-size:13px;color:#666;display:flex;flex-direction:column}.pg input{width:100%;text-align:center;font-size:18px}
+textarea{font-size:15px;padding:6px;border:1px solid #bbb;border-radius:6px;width:100%}.filebtn{background:#5c5c5c;color:#fff;border-radius:6px;padding:8px 12px;cursor:pointer;flex:0 0 auto!important;font-size:15px!important}.filebtn input{display:none}
+.svi{display:flex;flex-wrap:wrap;gap:6px;align-items:center;border-bottom:1px solid #eee;padding:6px 0}.svi span{flex:1 1 180px;min-width:0}.svi button{padding:5px 10px;font-size:14px}
+.dy{display:flex;gap:4px;overflow-x:auto;padding-bottom:4px}.dy button{flex:0 0 auto;background:#fff;color:#222;border:1px solid #d8c9b5;padding:4px 6px;line-height:1.3;font-size:13px;min-width:62px}.dy button.on{background:#7a2a18;color:#fff}.dy b{font-size:17px;display:block}
+.wn{color:#a12a1a}.okc{color:#2e7d32}.srl button{margin:3px;padding:4px 8px;font-size:14px;background:#fff;color:#7a2a18;border:1px solid #7a2a18}
+@media print{.noexp,.nav,#inp,#sv,#exp{display:none!important}body{background:#fff}.card{border:0;padding:0}details{display:block}details>*{display:block}.ju{break-inside:avoid}}
 </style></head><body><div class="wrap">
 <h1>八字十神論命</h1><p class="sub">以日主為中心，看四柱天干與藏干之十神，論性格、事業、六親、健康傾向與組合格局。</p>
-<div class="card">
+<div class="card noexp" id="inp">
+<div class="tabs"><button type="button" id="mD" class="on">以生日排盤</button><button type="button" id="mP">直接輸入八字</button></div>
+<div id="fD">
 <div class="row"><label>出生日期（公曆）<input type="date" id="bd" value="1981-03-17"></label><label>出生時間<input type="time" id="bt" value="17:15"></label></div>
-<div class="row"><label>性別<select id="sex"><option>男</option><option>女</option></select></label><label>時區 UTC+<input type="number" id="tz" value="8" step="0.5"></label></div>
-<div class="row"><span class="note"><input type="checkbox" id="lz" checked> 夜子時（23–24時）日柱換次日</span></div>
+<div class="row"><label>時區 UTC+<input type="number" id="tz" value="8" step="0.5"></label><span class="note" style="flex:1 1 200px"><input type="checkbox" id="lz" checked> 夜子時（23–24時）日柱換次日</span></div>
+</div>
+<div id="fP" style="display:none">
+<div class="pg"><label>年柱<input id="p0" maxlength="2" placeholder="辛酉"></label><label>月柱<input id="p1" maxlength="2" placeholder="辛卯"></label><label>日柱<input id="p2" maxlength="2" placeholder="甲午"></label><label>時柱<input id="p3" maxlength="2" placeholder="癸酉"></label></div>
+<div class="row"><label>起運歲數（選填）<input type="number" id="sa" step="0.1" min="0" max="12" placeholder="如 3.9"></label><label>出生年（選填）<input type="number" id="by" min="1900" max="2100" placeholder="如 1981"></label></div>
+<div class="row"><button type="button" class="sec" id="srch">搜尋 1900–2100 相符日期</button></div>
+<div id="pv" class="note"></div><div id="sr"></div>
+</div>
+<div class="row"><label>性別<select id="sex"><option>男</option><option>女</option></select></label></div>
 <div class="row"><button id="go">排盤論命</button></div>
 <div class="note" id="pn"></div>
 </div>
+<div class="card noexp" id="sv">
+<details><summary>命例儲存（本機）</summary>
+<div class="row"><label>命例名稱<input id="svN" maxlength="40" placeholder="如：王先生"></label></div>
+<div class="row"><label>備註<textarea id="svT" rows="2" maxlength="500"></textarea></label></div>
+<div class="row"><button type="button" id="svB">儲存目前命例</button><button type="button" class="sec" id="svX">匯出 JSON</button><label class="filebtn">匯入 JSON<input type="file" id="svI" accept=".json,application/json"></label></div>
+<div id="svL"></div><div class="note" id="svM">資料只存於本瀏覽器；請定期匯出備份。</div>
+</details></div>
+<div class="row noexp" id="exp" style="display:none"><button type="button" id="dW">下載 Word</button><button type="button" id="dP">下載 PDF</button><button type="button" class="sec" id="dPr">列印</button><button type="button" class="sec" id="shr">分享</button></div><div class="note noexp" id="emsg"></div>
 <div id="out"></div>
 <p class="warn">本站為命理參考，非醫療、法律或投資建議；健康傾向僅屬傳統命理之象，身體不適請就醫。</p>
 </div>
 <script src="calendar.js"></script><script src="shishen.js"></script><script src="bookdata.js"></script><script src="book.js"></script>
-<script>
-function $(i){return document.getElementById(i);}
-$('go').onclick=function(){var d=$('bd').value,t=$('bt').value||'12:00';if(!d){alert('請輸入出生日期');return;}
- var a=d.split('-').map(Number),b=t.split(':').map(Number),r=CAL.fromSolar(a[0],a[1],a[2],b[0],b[1],parseFloat($('tz').value)||8,$('lz').checked);
- $('pn').textContent='四柱：'+r.pillars.join('　')+(r.note?'（'+r.note+'）':'')+'。節氣以太陽黃經簡算，交節前後數分鐘請人工覆核。';
- var R=SS.calc(r.pillars);$('out').innerHTML='<div class="row nav"><a href="#ssTop">十神分析</a><a href="#bkTop">百局論斷</a><a href="#fq">夫妻宮神煞</a><a href="#ref">講義全文</a></div><div class="card">'+SS.html(r.pillars,$('sex').value)+'</div><div class="card">'+BK.personal(r.pillars,$('sex').value,R)+'</div><div class="card">'+BK.reference()+'</div>';};
-</script></body></html>
+<script src="tbx.js"></script><script src="app.js"></script></body></html>

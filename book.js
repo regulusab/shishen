@@ -44,5 +44,6 @@ function reference(){var o=['<h2 id="ref">參考資料（講義全文）</h2>'];
  det('總跋',section(function(t){return /總\s*跋/.test(t);}));
  o.push('<p class="src">資料來源：使用者提供講義《八字十神教學命理祕笈・全帙》（參酌《淵海子平》《三命通會》《神峰通考》《滴天髓》）、《六十甲子日生人夫妻宮（神煞加註版）簡表》；內容照錄，八專日依古法更正。</p>');
  return o.join('');}
-root.BK={personal:personal,reference:reference};
+function field(k,re){var J=BOOK.ju[k];if(!J)return null;for(var i=0;i<J.f.length;i++)if(re.test(J.f[i][0]))return {v:J.v,t:J.f[i][1],l:J.f[i][0]};return {v:J.v,t:'',l:''};}
+root.BK={personal:personal,reference:reference,field:field,badge:badge};
 })(this);
